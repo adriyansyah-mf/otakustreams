@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Shell } from "@/components/Shell";
 import { apiFetch } from "@/lib/http";
@@ -126,10 +127,12 @@ export default async function AnimeListPage(props: {
               className="group overflow-hidden rounded-2xl border border-white/10 bg-panel hover:border-white/20"
             >
               <div className="aspect-[16/9] bg-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={a.thumbnail_url ?? "/placeholder.svg"}
                   alt={`${a.title} - nonton anime sub indo`}
+                  width={640}
+                  height={360}
+                  sizes="(max-width: 1024px) 50vw, 25vw"
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                   loading="lazy"
                 />

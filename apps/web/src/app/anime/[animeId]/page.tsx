@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Shell } from "@/components/Shell";
 import { AnimeDetailClient } from "@/components/anime/AnimeDetailClient";
@@ -104,13 +105,15 @@ export default async function AnimeDetailPage(props: {
             }),
           }}
         />
-        <div className="relative">
+        <div className="relative h-56 md:h-80">
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={a.thumbnail_url ?? "/placeholder.svg"}
             alt={`${a.title} - poster anime sub indo`}
-            className="h-56 w-full object-cover opacity-70 md:h-80"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-70"
           />
           <div className="absolute inset-x-0 bottom-0 px-6 py-6">
             <h1 className="text-2xl font-black text-white md:text-4xl">

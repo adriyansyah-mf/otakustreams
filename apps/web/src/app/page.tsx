@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Shell } from "@/components/Shell";
 import { apiFetch } from "@/lib/http";
 import { makeSeoKey } from "@/lib/seoRoute";
@@ -30,10 +31,12 @@ export default async function HomePage() {
   return (
     <Shell>
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-panel">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={featured?.thumbnail_url ?? "/placeholder.svg"}
           alt={featured?.title ? `${featured.title} - nonton anime sub indo` : "Otakunesia - nonton anime sub indo"}
+          fill
+          priority
+          sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/80 to-bg/50" />
@@ -116,10 +119,12 @@ export default async function HomePage() {
               className="group overflow-hidden rounded-xl border border-white/10 bg-panel transition hover:-translate-y-0.5 hover:border-white/20"
             >
               <div className="aspect-[16/9] bg-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={a.thumbnail_url ?? "/placeholder.svg"}
                   alt={`${a.title} - nonton anime sub indo`}
+                  width={640}
+                  height={360}
+                  sizes="(max-width: 1024px) 50vw, 16vw"
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                 />
               </div>
@@ -157,10 +162,12 @@ export default async function HomePage() {
               className="group overflow-hidden rounded-xl border border-white/10 bg-panel transition hover:-translate-y-0.5 hover:border-white/20"
             >
               <div className="aspect-[3/4] bg-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={m.thumbnail_url ?? "/placeholder.svg"}
                   alt={`${m.title} - baca manga dan baca komik`}
+                  width={480}
+                  height={640}
+                  sizes="(max-width: 1024px) 40vw, 16vw"
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                 />
               </div>

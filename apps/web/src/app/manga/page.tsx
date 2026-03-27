@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Shell } from "@/components/Shell";
 import { apiFetch } from "@/lib/http";
@@ -115,10 +116,12 @@ export default async function MangaListPage(props: {
               className="group overflow-hidden rounded-2xl border border-white/10 bg-panel hover:border-white/20"
             >
               <div className="aspect-[3/4] bg-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={m.thumbnail_url ?? "/placeholder.svg"}
                   alt={`${m.title} - baca manga dan baca komik`}
+                  width={480}
+                  height={640}
+                  sizes="(max-width: 1024px) 40vw, 20vw"
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                   loading="lazy"
                 />

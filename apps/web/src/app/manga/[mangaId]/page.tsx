@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Shell } from "@/components/Shell";
@@ -99,10 +100,12 @@ export default async function MangaDetailPage(props: {
         />
         <div className="grid gap-6 p-6 md:grid-cols-[220px_1fr]">
           <div className="overflow-hidden rounded-xl border border-white/10 bg-soft">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={m.thumbnail_url ?? "/placeholder.svg"}
               alt={`${m.title} - cover manga`}
+              width={440}
+              height={620}
+              sizes="(max-width: 768px) 60vw, 220px"
               className="h-full w-full object-cover"
             />
           </div>
