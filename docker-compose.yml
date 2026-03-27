@@ -50,7 +50,18 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
       REDIS_URL: ${REDIS_URL}
-    command: ["celery", "-A", "app.worker.celery_app", "worker", "-l", "INFO"]
+    # Concurrency: berapa task crawl jalan paralel (1 = paling hemat CPU/RAM di VPS kecil)
+    command:
+      - celery
+      - -A
+      - app.worker.celery_app
+      - worker
+      - -l
+      - INFO
+      - -c
+      - "${CELERY_WORKER_CONCURRENCY:-2}"
+      - --prefetch-multiplier
+      - "${CELERY_WORKER_PREFETCH_MULTIPLIER:-1}"
     depends_on:
       api:
         condition: service_healthy
