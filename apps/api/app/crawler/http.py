@@ -14,7 +14,7 @@ class FetchResult:
 
 
 DEFAULT_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; OtakuStreamBot/0.1; +https://localhost)",
+    "User-Agent": "Mozilla/5.0 (compatible; OtakunesiaBot/0.1; +https://localhost)",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
 

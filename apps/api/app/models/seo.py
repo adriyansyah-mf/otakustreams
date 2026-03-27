@@ -15,7 +15,7 @@ class SeoSettings(Base):
     __tablename__ = "seo_settings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    site_title: Mapped[str] = mapped_column(String(200), default="OtakuStream", nullable=False)
+    site_title: Mapped[str] = mapped_column(String(200), default="Otakunesia", nullable=False)
     site_description: Mapped[str] = mapped_column(Text, default="Streaming anime & baca manga (MVP).", nullable=False)
     og_image_url: Mapped[str | None] = mapped_column(String(700), nullable=True)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)

@@ -3,7 +3,7 @@ import { Shell } from "@/components/Shell";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "Kebijakan privasi OtakuStream.",
+  description: "Kebijakan privasi Otakunesia.",
 };
 
 export default function PrivacyPage() {

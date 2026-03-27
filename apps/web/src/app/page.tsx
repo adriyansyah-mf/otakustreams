@@ -33,16 +33,16 @@ export default async function HomePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={featured?.thumbnail_url ?? "/placeholder.svg"}
-          alt={featured?.title ?? "OtakuStream"}
+          alt={featured?.title ? `${featured.title} - nonton anime sub indo` : "Otakunesia - nonton anime sub indo"}
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/80 to-bg/50" />
         <div className="relative px-6 py-12 md:px-10 md:py-14">
           <p className="text-xs font-semibold tracking-[0.2em] text-white/60">
-            OTAKUSTREAM
+            OTAKUNESIA
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-white md:text-5xl">
-            Nonton anime dan baca manga dalam satu platform yang cepat, rapi, dan SEO-friendly.
+            Nonton anime sub indo, baca manga, dan baca komik online dalam satu platform cepat.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 md:text-base">
             Katalog terus terbarui dari crawler background, pengalaman menonton nyaman,
@@ -118,7 +118,7 @@ export default async function HomePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={a.thumbnail_url ?? "/placeholder.svg"}
-                  alt={a.title}
+                  alt={`${a.title} - nonton anime sub indo`}
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                 />
               </div>
@@ -159,7 +159,7 @@ export default async function HomePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={m.thumbnail_url ?? "/placeholder.svg"}
-                  alt={m.title}
+                  alt={`${m.title} - baca manga dan baca komik`}
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                 />
               </div>

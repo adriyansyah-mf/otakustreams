@@ -10,9 +10,9 @@ export function Shell(props: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/icon.svg" alt="OtakuStream logo" className="h-8 w-8" />
+            <img src="/icon.svg" alt="Logo Otakunesia" className="h-8 w-8" />
             <span className="text-sm font-semibold tracking-wide text-white">
-              OtakuStream
+              Otakunesia
             </span>
           </Link>
 
@@ -58,7 +58,7 @@ export function Shell(props: { children: React.ReactNode }) {
       <footer className="border-t border-white/10 py-10">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/55">
-            <span>© {new Date().getFullYear()} OtakuStream</span>
+            <span>© {new Date().getFullYear()} Otakunesia</span>
             <Link href="/terms" className="underline hover:text-white">
               Terms
             </Link>
@@ -70,7 +70,7 @@ export function Shell(props: { children: React.ReactNode }) {
             </Link>
           </div>
           <div className="mt-3 text-xs text-white/45">
-            OtakuStream menampilkan link dari source publik. Kami tidak meng-host video/gambar pihak ketiga.
+            Otakunesia menampilkan link dari source publik. Kami tidak meng-host video/gambar pihak ketiga.
           </div>
         </div>
       </footer>

@@ -23,7 +23,7 @@ export async function generateMetadata(props: {
   const canonicalPath = `/manga/chapter/${ch.id}`;
   return {
     title: `Chapter ${ch.chapter_number}`,
-    description: `Baca chapter ${ch.chapter_number} di OtakuStream`,
+    description: `Baca chapter ${ch.chapter_number} manga/komik online di Otakunesia`,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: `Chapter ${ch.chapter_number}`,

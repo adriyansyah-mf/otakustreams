@@ -41,7 +41,10 @@ export async function generateMetadata(props: {
   const title = q ? `Manga: ${q}` : "Manga";
   return {
     title: page > 1 ? `${title} (Page ${page})` : title,
-    description: q ? `Cari manga: ${q}` : "Katalog manga untuk reader scroll-friendly.",
+    description: q
+      ? `Cari manga/komik: ${q} - baca manga dan baca komik online di Otakunesia.`
+      : "Baca manga dan baca komik online terbaru di Otakunesia.",
+    keywords: ["baca manga", "baca komik", "komik online", "manga terbaru"],
     alternates: { canonical: canonicalPath },
     openGraph: { url: new URL(canonicalPath, env.siteUrl).toString() },
   };
@@ -115,7 +118,7 @@ export default async function MangaListPage(props: {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={m.thumbnail_url ?? "/placeholder.svg"}
-                  alt={m.title}
+                  alt={`${m.title} - baca manga dan baca komik`}
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                   loading="lazy"
                 />

@@ -18,8 +18,8 @@ def get_settings(db: Session = Depends(get_db)):
         return SeoSettingsOut(site_title=row.site_title, site_description=row.site_description, og_image_url=row.og_image_url)
     # default fallback
     return SeoSettingsOut(
-        site_title="OtakuStream",
-        site_description="Streaming anime & baca manga (MVP).",
+        site_title="Otakunesia",
+        site_description="Nonton anime sub indo, baca manga, dan baca komik online.",
         og_image_url=None,
     )
 

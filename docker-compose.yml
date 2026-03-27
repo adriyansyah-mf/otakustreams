@@ -90,13 +90,22 @@ services:
     image: nginx:1.27-alpine
     volumes:
       - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infra/certbot/conf:/etc/letsencrypt
+      - ./infra/certbot/www:/var/www/certbot
     ports:
-      - "8080:80"
+      - "80:80"
+      - "443:443"
     depends_on:
       web:
         condition: service_started
       api:
         condition: service_healthy
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./infra/certbot/conf:/etc/letsencrypt
+      - ./infra/certbot/www:/var/www/certbot
 
 volumes:
   postgres_data:

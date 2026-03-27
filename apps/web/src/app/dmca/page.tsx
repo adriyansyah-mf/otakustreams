@@ -3,7 +3,7 @@ import { Shell } from "@/components/Shell";
 
 export const metadata: Metadata = {
   title: "DMCA",
-  description: "Kebijakan takedown (DMCA) OtakuStream.",
+  description: "Kebijakan takedown (DMCA) Otakunesia.",
 };
 
 export default function DmcaPage() {
@@ -15,7 +15,7 @@ export default function DmcaPage() {
           Jika kamu pemegang hak cipta dan ingin meminta penghapusan link dari katalog, kirim detail berikut:
         </p>
         <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-          <li>URL halaman di OtakuStream yang ingin ditakedown</li>
+          <li>URL halaman di Otakunesia yang ingin ditakedown</li>
           <li>Bukti kepemilikan hak cipta (atau otorisasi)</li>
           <li>Kontak yang bisa dihubungi</li>
         </ul>

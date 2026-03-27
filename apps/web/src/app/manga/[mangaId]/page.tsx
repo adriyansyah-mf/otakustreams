@@ -37,7 +37,8 @@ export async function generateMetadata(props: {
   const canonicalPath = `/manga/${makeSeoKey(m.id, m.title ?? String(m.id))}`;
   return {
     title: m.title,
-    description: m.synopsis ?? `Baca ${m.title} di OtakuStream`,
+    description: m.synopsis ?? `Baca manga dan komik ${m.title} di Otakunesia`,
+    keywords: ["baca manga", "baca komik", m.title],
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: m.title,
@@ -101,7 +102,7 @@ export default async function MangaDetailPage(props: {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={m.thumbnail_url ?? "/placeholder.svg"}
-              alt={m.title}
+              alt={`${m.title} - cover manga`}
               className="h-full w-full object-cover"
             />
           </div>

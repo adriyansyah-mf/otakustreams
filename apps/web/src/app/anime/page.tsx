@@ -43,7 +43,10 @@ export async function generateMetadata(props: {
   const title = q ? `Anime: ${q}` : "Anime";
   return {
     title: page > 1 ? `${title} (Page ${page})` : title,
-    description: q ? `Cari anime: ${q}` : "Katalog anime diisi otomatis oleh crawler.",
+    description: q
+      ? `Cari anime sub indo: ${q} - nonton anime subtitle Indonesia di Otakunesia.`
+      : "Nonton anime sub indo terbaru dan populer di Otakunesia.",
+    keywords: ["nonton anime", "nonton anime sub indo", "anime subtitle indonesia", "anime terbaru"],
     alternates: { canonical: canonicalPath },
     openGraph: { url: new URL(canonicalPath, env.siteUrl).toString() },
   };
@@ -126,7 +129,7 @@ export default async function AnimeListPage(props: {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={a.thumbnail_url ?? "/placeholder.svg"}
-                  alt={a.title}
+                  alt={`${a.title} - nonton anime sub indo`}
                   className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
                   loading="lazy"
                 />

@@ -10,7 +10,7 @@ from app.routers.seo import admin_router as seo_admin_router, router as seo_rout
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="OtakuStream API", version="0.1.0")
+    app = FastAPI(title="Otakunesia API", version="0.1.0")
 
     app.add_middleware(
         CORSMiddleware,

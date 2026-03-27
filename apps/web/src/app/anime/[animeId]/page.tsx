@@ -46,7 +46,8 @@ export async function generateMetadata(props: {
   const canonicalPath = `/anime/${makeSeoKey(a.id, a.title ?? String(a.id))}`;
   return {
     title: a.title,
-    description: a.synopsis ?? `Nonton ${a.title} di OtakuStream`,
+    description: a.synopsis ?? `Nonton anime sub indo ${a.title} di Otakunesia`,
+    keywords: ["nonton anime", "anime sub indo", a.title],
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: a.title,
@@ -108,7 +109,7 @@ export default async function AnimeDetailPage(props: {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={a.thumbnail_url ?? "/placeholder.svg"}
-            alt={a.title}
+            alt={`${a.title} - poster anime sub indo`}
             className="h-56 w-full object-cover opacity-70 md:h-80"
           />
           <div className="absolute inset-x-0 bottom-0 px-6 py-6">

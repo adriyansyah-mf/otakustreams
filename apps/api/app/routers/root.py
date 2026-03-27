@@ -6,5 +6,5 @@ router = APIRouter()
 
 @router.get("/")
 def root():
-    return {"name": "OtakuStream API", "ok": True}
+    return {"name": "Otakunesia API", "ok": True}
 
