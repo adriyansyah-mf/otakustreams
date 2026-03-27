@@ -45,9 +45,10 @@ export default async function HomePage() {
             Nonton anime sub indo, baca manga, dan baca komik online dalam satu platform cepat.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 md:text-base">
-            Katalog terus terbarui dari crawler background, pengalaman menonton nyaman,
-            reader manga ringan, serta fitur personalisasi seperti bookmark, history,
-            notifikasi update, dan rekomendasi.
+            Di Otakunesia kamu bisa nonton anime sub indo, baca manga, dan baca komik online
+            dengan katalog yang terus terbarui dari crawler background, pengalaman menonton nyaman,
+            reader ringan, serta fitur personalisasi seperti bookmark, history, notifikasi update,
+            dan rekomendasi.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
             <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-white/75">

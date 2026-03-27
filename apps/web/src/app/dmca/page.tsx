@@ -10,8 +10,9 @@ export default function DmcaPage() {
   return (
     <Shell>
       <div className="rounded-2xl border border-white/10 bg-panel p-6">
-        <h1 className="text-2xl font-black text-white">DMCA / Takedown</h1>
+        <h1 className="text-2xl font-black text-white">DMCA Takedown Policy</h1>
         <p className="mt-3 text-sm leading-6 text-white/70">
+          DMCA Takedown Policy ini mengatur proses penghapusan konten berdasarkan klaim hak cipta.
           Jika kamu pemegang hak cipta dan ingin meminta penghapusan link dari katalog, kirim detail berikut:
         </p>
         <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">

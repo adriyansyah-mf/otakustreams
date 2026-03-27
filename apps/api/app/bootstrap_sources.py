@@ -28,11 +28,15 @@ DEFAULT_SOURCES: list[dict] = [
 def main() -> None:
     db = SessionLocal()
     try:
-        existing = db.execute(select(Source).limit(1)).scalar_one_or_none()
-        if existing:
-            return
-
         for s in DEFAULT_SOURCES:
+            exists = db.execute(
+                select(Source).where(
+                    Source.kind == s["kind"],
+                    Source.list_url == s["list_url"],
+                )
+            ).scalar_one_or_none()
+            if exists:
+                continue
             db.add(Source(**s))
         db.commit()
     finally:
