@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Shell } from "@/components/Shell";
+import { AdSlot } from "@/components/ads/AdSlot";
 import { BookmarkButton } from "@/components/bookmark/BookmarkButton";
 import { CommunitySection } from "@/components/community/CommunitySection";
 import { FollowButton } from "@/components/notifications/FollowButton";
@@ -133,6 +134,10 @@ export default async function MangaDetailPage(props: {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-white/10 px-6 pt-6">
+          <AdSlot placement="manga_top" />
         </div>
 
         <div className="border-t border-white/10 p-6">

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Play } from "lucide-react";
 import { PlayerModal } from "@/components/PlayerModal";
+import { AdSlot } from "@/components/ads/AdSlot";
 import { cx } from "@/components/ui";
 import { apiFetch } from "@/lib/http";
 
@@ -58,6 +59,9 @@ export function AnimeDetailClient(props: { animeTitle: string; episodes: Episode
 
   return (
     <div className="mt-3">
+      <div className="mb-4">
+        <AdSlot placement="player_top" />
+      </div>
       <PlayerModal
         open={open}
         title={playTitle}

@@ -12,7 +12,8 @@ export function AdSlot(props: { placement: string }) {
     apiFetch<any[]>(`/ads?placement=${encodeURIComponent(props.placement)}`)
       .then((ads) => {
         if (!mounted) return;
-        const firstEnabled = ads?.[0]?.html ?? null;
+        const raw = ads?.[0]?.html;
+        const firstEnabled = typeof raw === "string" && raw.trim() ? raw : null;
         setHtml(firstEnabled);
       })
       .catch((e) => {
@@ -35,6 +36,7 @@ export function AdSlot(props: { placement: string }) {
   return (
     <div
       className="ad-slot"
+      data-placement={props.placement}
       // Admin controls the HTML snippet.
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: html }}
