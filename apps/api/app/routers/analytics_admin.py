@@ -1,7 +1,7 @@
 from datetime import date, datetime, timedelta
 
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import distinct, func, select
+from sqlalchemy import distinct, func, select, text
 from sqlalchemy.orm import Session
 
 from app.core.deps import require_admin
@@ -114,21 +114,27 @@ def visits_report(
         )
     ).scalar_one()
 
+    # SQL eksplisit (tanpa date_trunc) — kompatibel dengan PostgreSQL GROUP BY.
+    # Hari dihitung dalam UTC agar konsisten.
     day_rows = db.execute(
-        select(
-            func.date_trunc("day", PageView.created_at).label("bucket"),
-            func.count().label("c"),
-        )
-        .where(PageView.created_at >= since)
-        .group_by(func.date_trunc("day", PageView.created_at))
-        .order_by(func.date_trunc("day", PageView.created_at))
+        text(
+            """
+            SELECT ((analytics_page_views.created_at AT TIME ZONE 'UTC')::date) AS bucket,
+                   count(*)::bigint AS c
+            FROM analytics_page_views
+            WHERE analytics_page_views.created_at >= :since
+            GROUP BY ((analytics_page_views.created_at AT TIME ZONE 'UTC')::date)
+            ORDER BY bucket
+            """
+        ),
+        {"since": since},
     ).all()
 
     counts_by_day: dict[date, int] = {}
     for bucket, c in day_rows:
         if bucket is None:
             continue
-        d = bucket.date() if hasattr(bucket, "date") else bucket
+        d = bucket if isinstance(bucket, date) else (bucket.date() if hasattr(bucket, "date") else bucket)
         counts_by_day[d] = int(c)
 
     end_d = now.date()

@@ -30,14 +30,14 @@ export default async function HomePage() {
 
   return (
     <Shell>
-      <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-panel">
+      <section className="relative min-h-[280px] overflow-hidden rounded-3xl border border-white/10 bg-panel md:min-h-[360px]">
         <Image
           src={featured?.thumbnail_url ?? "/placeholder.svg"}
           alt={featured?.title ? `${featured.title} - nonton anime sub indo` : "Otakunesia - nonton anime sub indo"}
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/80 to-bg/50" />
         <div className="relative px-6 py-12 md:px-10 md:py-14">
