@@ -39,7 +39,6 @@ export default async function HomePage() {
     apiFetch<MangaItem[]>("/manga?limit=12"),
   ]);
   const featured = anime[0];
-  const hasCatalog = anime.length > 0 || manga.length > 0;
 
   return (
     <Shell>
@@ -62,25 +61,16 @@ export default async function HomePage() {
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 md:text-base">
             Di Otakunesia kamu bisa nonton anime sub indo, baca manga, dan baca komik online
-            dengan katalog yang terus terbarui dari crawler background, pengalaman menonton nyaman,
-            reader ringan, serta fitur personalisasi seperti bookmark, history, notifikasi update,
-            dan rekomendasi.
+            dengan katalog yang terus diperbarui, pengalaman menonton yang nyaman, reader ringan,
+            serta fitur seperti bookmark, riwayat, notifikasi update, dan rekomendasi.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
             <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-white/75">
-              {anime.length} Anime
+              {anime.length} judul anime
             </span>
             <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-white/75">
-              {manga.length} Manga
+              {manga.length} judul manga
             </span>
-            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-white/75">
-              SSR + Sitemap + Structured Data
-            </span>
-            {featured ? (
-              <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-white/75">
-                Featured score: {featured.score ?? "—"}
-              </span>
-            ) : null}
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
@@ -96,21 +86,8 @@ export default async function HomePage() {
             >
               Jelajahi Manga
             </Link>
-            <Link
-              href="/admin"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/15 bg-transparent px-6 text-base font-semibold text-white/90 hover:bg-white/5 active:bg-white/10 md:text-sm"
-            >
-              Admin Panel
-            </Link>
           </div>
         </div>
-      </section>
-
-      <section className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <InfoPill label="Katalog aktif" value={hasCatalog ? "Online" : "Menunggu crawl"} />
-        <InfoPill label="Fokus UX" value="Watch + Reader" />
-        <InfoPill label="Personalisasi" value="Bookmark & History" />
-        <InfoPill label="Admin tools" value="Crawler + Moderasi" />
       </section>
 
       <div className="mt-6">
@@ -154,7 +131,7 @@ export default async function HomePage() {
           ))}
           {anime.length === 0 ? (
             <div className="col-span-full rounded-xl border border-dashed border-white/15 bg-panel p-6 text-sm text-white/60">
-              Belum ada data anime. Jalankan crawler dari admin panel untuk memulai katalog.
+              Belum ada judul anime di katalog. Cek lagi nanti.
             </div>
           ) : null}
         </div>
@@ -196,7 +173,7 @@ export default async function HomePage() {
           ))}
           {manga.length === 0 ? (
             <div className="col-span-full rounded-xl border border-dashed border-white/15 bg-panel p-6 text-sm text-white/60">
-              Belum ada data manga. Jalankan crawler dari admin panel untuk memulai katalog.
+              Belum ada judul manga di katalog. Cek lagi nanti.
             </div>
           ) : null}
         </div>
@@ -207,16 +184,16 @@ export default async function HomePage() {
 
       <section className="mt-10 grid gap-4 md:grid-cols-3">
         <Card
-          title="Crawler Automation"
-          desc="Update katalog berjalan otomatis dengan worker dan scheduler di background."
+          title="Katalog terkini"
+          desc="Judul anime dan manga diperbarui berkala supaya kamu tidak ketinggalan episode atau chapter baru."
         />
         <Card
-          title="SEO Foundation"
-          desc="SSR, metadata, canonical URL, sitemap, dan structured data siap untuk indexing."
+          title="Nyaman dipakai"
+          desc="Player embed untuk streaming dan reader ringan untuk baca manga—fokus ke konten, bukan antarmuka yang ribet."
         />
         <Card
-          title="Public-Ready UX"
-          desc="Navigasi jelas, pencarian cepat, feed personal, dan panel admin untuk operasional."
+          title="Akun & progres"
+          desc="Login untuk bookmark, riwayat tonton/baca, notifikasi update, dan rekomendasi yang lebih pas."
         />
       </section>
     </Shell>
@@ -228,15 +205,6 @@ function DeferredSectionSkeleton() {
     <div className="mt-10 space-y-3" aria-hidden>
       <div className="h-4 w-40 animate-pulse rounded bg-white/10" />
       <div className="h-36 animate-pulse rounded-2xl border border-white/10 bg-panel/40" />
-    </div>
-  );
-}
-
-function InfoPill(props: { label: string; value: string }) {
-  return (
-    <div className="rounded-xl border border-white/10 bg-panel/80 px-4 py-3">
-      <div className="text-[11px] font-semibold uppercase tracking-widest text-white/45">{props.label}</div>
-      <div className="mt-1 text-sm font-semibold text-white">{props.value}</div>
     </div>
   );
 }

@@ -1,22 +1,38 @@
+import logging
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
+from app.core.config import settings
 from app.routers import admin, anime, auth, bookmarks, community, health, history, manga, notifications, recommendations, reports, root
 from app.routers.ads import admin_router as ads_admin_router, router as ads_router
 from app.routers.analytics_admin import router as analytics_router
 from app.routers.analytics_public import router as analytics_public_router
 from app.routers.seo import admin_router as seo_admin_router, router as seo_router
 
+logger = logging.getLogger("otakustream.api")
+
+
+def _cors_config() -> tuple[list[str], bool]:
+    raw = (settings.cors_allowed_origins or "").strip()
+    if not raw or raw == "*":
+        return ["*"], False
+    origins = [p.strip() for p in raw.split(",") if p.strip()]
+    if not origins:
+        return ["*"], False
+    return origins, True
+
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Otakunesia API", version="0.1.0")
 
+    cors_origins, cors_credentials = _cors_config()
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
+        allow_origins=cors_origins,
+        allow_credentials=cors_credentials,
         allow_methods=["*"],
         allow_headers=["*"],
     )
@@ -43,13 +59,10 @@ def create_app() -> FastAPI:
 
     @app.exception_handler(RequestValidationError)
     async def validation_exception_handler(request: Request, exc: RequestValidationError):
-        # Server-side log to debug 422 quickly.
-        print(
-            "REQUEST_VALIDATION_ERROR",
+        logger.warning(
+            "request_validation_error url=%s errors=%s",
             str(request.url),
             exc.errors(),
-            "body=",
-            getattr(exc, "body", None),
         )
         return JSONResponse(status_code=422, content={"detail": exc.errors()})
     return app

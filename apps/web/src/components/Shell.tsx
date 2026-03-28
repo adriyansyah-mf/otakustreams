@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { env } from "@/lib/env";
 import { SearchForm } from "@/components/header/SearchForm";
 import { MainNav } from "@/components/header/MainNav";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
@@ -72,6 +73,14 @@ export function Shell(props: { children: React.ReactNode }) {
             <Link href="/dmca" className="inline-flex min-h-[44px] items-center underline hover:text-white">
               DMCA
             </Link>
+            {env.showAdminFooterLink ? (
+              <Link
+                href="/admin"
+                className="inline-flex min-h-[44px] items-center text-white/35 underline hover:text-white/55"
+              >
+                Admin
+              </Link>
+            ) : null}
           </div>
           <div className="mt-3 max-w-prose text-sm leading-relaxed text-white/45">
             Otakunesia menampilkan link dari source publik. Kami tidak meng-host video/gambar pihak ketiga.

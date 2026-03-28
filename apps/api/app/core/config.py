@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     admin_email: str = "admin@local"
     admin_password: str = "admin12345"
 
+    # Comma-separated origins, e.g. "https://otakunesia.com,https://www.otakunesia.com"
+    # Use "*" only for development; production should list real origins for correct CORS + credentials.
+    cors_allowed_origins: str = "*"
+
 
 settings = Settings()  # type: ignore[arg-type]
 

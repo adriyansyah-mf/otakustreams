@@ -4,6 +4,22 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   // Saat NEXT_PUBLIC_API_BASE_URL relatif (/api), browser memanggil origin Next — perlu proxy ke FastAPI di dev.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     const publicBase = process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api";
     if (!publicBase.startsWith("/")) {
