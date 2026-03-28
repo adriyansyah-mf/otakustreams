@@ -1,11 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Shell } from "@/components/Shell";
 import { apiFetch } from "@/lib/http";
 import { makeSeoKey } from "@/lib/seoRoute";
-import { AdSlot } from "@/components/ads/AdSlot";
-import { ContinueSection } from "@/components/home/ContinueSection";
-import { RecommendationSection } from "@/components/home/RecommendationSection";
+
+const AdSlot = dynamic(
+  () => import("@/components/ads/AdSlot").then((m) => ({ default: m.AdSlot })),
+  { loading: () => <div className="mt-6 h-12 animate-pulse rounded-xl bg-white/[0.04]" aria-hidden /> },
+);
+
+const ContinueSection = dynamic(
+  () => import("@/components/home/ContinueSection").then((m) => ({ default: m.ContinueSection })),
+  { loading: () => <DeferredSectionSkeleton /> },
+);
+
+const RecommendationSection = dynamic(
+  () => import("@/components/home/RecommendationSection").then((m) => ({ default: m.RecommendationSection })),
+  { loading: () => <DeferredSectionSkeleton /> },
+);
 
 type AnimeItem = {
   id: number;
@@ -207,6 +220,15 @@ export default async function HomePage() {
         />
       </section>
     </Shell>
+  );
+}
+
+function DeferredSectionSkeleton() {
+  return (
+    <div className="mt-10 space-y-3" aria-hidden>
+      <div className="h-4 w-40 animate-pulse rounded bg-white/10" />
+      <div className="h-36 animate-pulse rounded-2xl border border-white/10 bg-panel/40" />
+    </div>
   );
 }
 

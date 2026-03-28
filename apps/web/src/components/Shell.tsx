@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cx } from "@/components/ui";
 import { SearchForm } from "@/components/header/SearchForm";
 import { MainNav } from "@/components/header/MainNav";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
