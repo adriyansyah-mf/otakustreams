@@ -45,7 +45,7 @@ export default async function HomePage() {
             OTAKUNESIA
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-white md:text-5xl">
-            Nonton anime sub indo, baca manga, dan baca komik online dalam satu platform cepat.
+            Nonton anime sub indo, baca manga & komik—satu platform cepat
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 md:text-base">
             Di Otakunesia kamu bisa nonton anime sub indo, baca manga, dan baca komik online
@@ -73,19 +73,19 @@ export default async function HomePage() {
           <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
             <Link
               href={featured ? `/anime/${makeSeoKey(featured.id, featured.title)}` : "/anime"}
-              className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand/90"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-brand px-6 text-base font-semibold text-white hover:bg-brand/90 active:bg-brand/80 md:text-sm"
             >
               Mulai Nonton
             </Link>
             <Link
               href="/manga"
-              className="rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/15"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-white/10 px-6 text-base font-semibold text-white hover:bg-white/15 active:bg-white/10 md:text-sm"
             >
               Jelajahi Manga
             </Link>
             <Link
               href="/admin"
-              className="rounded-full border border-white/15 bg-transparent px-5 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/5"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/15 bg-transparent px-6 text-base font-semibold text-white/90 hover:bg-white/5 active:bg-white/10 md:text-sm"
             >
               Admin Panel
             </Link>
@@ -223,10 +223,13 @@ function SectionHeading(props: { title: string; subtitle: string; href: string; 
   return (
     <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h2 className="text-sm font-semibold text-white md:text-base">{props.title}</h2>
-        <p className="mt-1 text-xs text-white/55">{props.subtitle}</p>
+        <h2 className="text-base font-semibold text-white md:text-lg">{props.title}</h2>
+        <p className="mt-1 text-sm text-white/55 md:text-xs">{props.subtitle}</p>
       </div>
-      <Link href={props.href} className="text-xs font-semibold text-brand hover:underline">
+      <Link
+        href={props.href}
+        className="inline-flex min-h-[44px] items-center text-sm font-semibold text-brand hover:underline md:text-xs"
+      >
         {props.cta}
       </Link>
     </div>

@@ -15,8 +15,12 @@ export function NotificationBell() {
   }, []);
 
   return (
-    <Link href="/notifications" className="relative rounded bg-white/10 px-3 py-2 text-xs font-semibold text-white hover:bg-white/15">
-      <Bell className="h-4 w-4" />
+    <Link
+      href="/notifications"
+      className="relative inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-white/10 px-3 text-sm font-semibold text-white hover:bg-white/15 active:bg-white/20"
+      aria-label="Notifikasi"
+    >
+      <Bell className="h-5 w-5" aria-hidden />
       {count > 0 ? (
         <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand px-1 text-[10px]">
           {count > 9 ? "9+" : count}

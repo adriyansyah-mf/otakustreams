@@ -21,32 +21,34 @@ export function SearchForm() {
         }
         router.push(`${base}?q=${encodeURIComponent(query)}`);
       }}
-      className="hidden md:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1.5"
+      className="flex w-full min-w-0 items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 md:w-auto md:max-w-md md:rounded-full md:py-1.5"
       role="search"
-      aria-label="Search anime or manga"
+      aria-label="Cari anime atau manga"
     >
-      <Search className="h-4 w-4 text-white/60" />
+      <Search className="h-5 w-5 shrink-0 text-white/60 md:h-4 md:w-4" aria-hidden />
       <input
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Cari judul..."
-        className="w-36 bg-transparent text-xs text-white placeholder:text-white/40 outline-none"
+        className="min-h-[44px] min-w-0 flex-1 bg-transparent text-base text-white placeholder:text-white/40 outline-none md:min-h-0 md:w-36 md:text-sm"
+        autoComplete="off"
+        enterKeyHint="search"
       />
       <select
         value={scope}
         onChange={(e) => setScope(e.target.value as "anime" | "manga")}
-        className="rounded-full bg-bg px-2 py-1 text-[11px] text-white outline-none"
+        className="min-h-[44px] shrink-0 rounded-xl bg-bg px-2 py-1 text-sm text-white outline-none md:min-h-0 md:rounded-full md:text-[11px]"
+        aria-label="Jenis konten"
       >
         <option value="anime">Anime</option>
         <option value="manga">Manga</option>
       </select>
       <button
         type="submit"
-        className="rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold text-white hover:bg-white/15"
+        className="min-h-[44px] shrink-0 rounded-xl bg-white/10 px-3 py-2 text-sm font-semibold text-white hover:bg-white/15 active:bg-white/20 md:min-h-0 md:rounded-full md:px-2 md:py-1 md:text-[11px]"
       >
         Search
       </button>
     </form>
   );
 }
-

@@ -1,15 +1,24 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { env } from "@/lib/env";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0B0B10",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.siteUrl),
   applicationName: "Otakunesia",
   title: {
-    default: "Otakunesia",
+    default:
+      "Otakunesia — Nonton Anime Sub Indo & Baca Manga Komik Online",
     template: "%s · Otakunesia",
   },
-  description: "Otakunesia - nonton anime sub indo, baca manga, dan baca komik online subtitle Indonesia.",
+  description:
+    "Otakunesia: nonton anime sub indo, baca manga, dan komik online subtitle Indonesia. Katalog lengkap, update terbaru, dan streaming yang ringan di satu tempat.",
   keywords: [
     "nonton anime",
     "nonton anime sub indo",
@@ -31,8 +40,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.svg" }],
   },
   openGraph: {
-    title: "Otakunesia",
-    description: "Nonton anime sub indo, baca manga, dan baca komik online subtitle Indonesia.",
+    title:
+      "Otakunesia — Nonton Anime Sub Indo & Baca Manga Komik Online",
+    description:
+      "Otakunesia: nonton anime sub indo, baca manga, dan komik online subtitle Indonesia. Katalog lengkap, update terbaru, dan streaming yang ringan di satu tempat.",
     url: env.siteUrl,
     siteName: "Otakunesia",
     type: "website",
@@ -40,8 +51,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Otakunesia",
-    description: "Nonton anime sub indo, baca manga, dan baca komik online.",
+    title:
+      "Otakunesia — Nonton Anime Sub Indo & Baca Manga Komik Online",
+    description:
+      "Otakunesia: nonton anime sub indo, baca manga, dan komik online subtitle Indonesia. Katalog lengkap, update terbaru, dan streaming yang ringan di satu tempat.",
   },
   robots: {
     index: true,
