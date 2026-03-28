@@ -3,6 +3,7 @@ import { Film, BookOpen, Bookmark } from "lucide-react";
 import { cx } from "@/components/ui";
 import { SearchForm } from "@/components/header/SearchForm";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
+import { AnalyticsBeacon } from "@/components/AnalyticsBeacon";
 
 export function Shell(props: { children: React.ReactNode }) {
   return (
@@ -53,6 +54,7 @@ export function Shell(props: { children: React.ReactNode }) {
         </div>
       </header>
 
+      <AnalyticsBeacon />
       <main className="mx-auto max-w-6xl px-4 py-8">{props.children}</main>
 
       <footer className="border-t border-white/10 py-10">

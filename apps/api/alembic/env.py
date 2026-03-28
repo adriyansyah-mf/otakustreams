@@ -10,7 +10,7 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from app.db.base import Base
-from app.models import ads, analytics, anime, bookmark, community, crawl, history, manga, seo, source, user  # noqa: F401
+from app.models import ads, analytics, anime, bookmark, community, crawl, history, manga, pageview, seo, source, user  # noqa: F401
 
 config = context.config
 

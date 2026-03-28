@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 from app.routers import admin, anime, auth, bookmarks, community, health, history, manga, notifications, recommendations, reports, root
 from app.routers.ads import admin_router as ads_admin_router, router as ads_router
 from app.routers.analytics_admin import router as analytics_router
+from app.routers.analytics_public import router as analytics_public_router
 from app.routers.seo import admin_router as seo_admin_router, router as seo_router
 
 
@@ -37,6 +38,7 @@ def create_app() -> FastAPI:
     app.include_router(ads_admin_router)
     app.include_router(seo_router)
     app.include_router(seo_admin_router)
+    app.include_router(analytics_public_router)
     app.include_router(analytics_router)
 
     @app.exception_handler(RequestValidationError)
