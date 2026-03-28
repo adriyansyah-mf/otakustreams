@@ -1,0 +1,7 @@
+1. WorkingDirectory di otakustream-certbot-renew.service diset ke /root/otakustreams — ubah jika repo kamu di path lain.
+2. sudo cp infra/systemd/otakustream-certbot-renew.service infra/systemd/otakustream-certbot-renew.timer /etc/systemd/system/
+3. sudo systemctl daemon-reload && sudo systemctl enable --now otakustream-certbot-renew.timer
+4. sudo systemctl list-timers | grep otakustream
+
+Alternatif tanpa systemd: crontab -e
+0 3,15 * * * cd /root/otakustreams && sh infra/scripts/renew-letsencrypt.sh

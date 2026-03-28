@@ -1,0 +1,10 @@
+[Unit]
+Description=Renew TLS certificates (Certbot) and reload nginx for Otakustream
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Path repo di VPS (deploy di /root/otakustreams)
+WorkingDirectory=/root/otakustreams
+ExecStart=/usr/bin/env sh infra/scripts/renew-letsencrypt.sh
