@@ -162,4 +162,3 @@ def visits_report(
         total_in_period=int(total_in_period or 0),
         unique_sessions_in_period=int(unique_sessions_in_period or 0),
     )
-

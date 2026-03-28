@@ -1,0 +1,12 @@
+{
+  "include": ["apps/api"],
+  "executionEnvironments": [
+    {
+      "root": "apps/api",
+      "pythonVersion": "3.12",
+      "extraPaths": []
+    }
+  ],
+  "venvPath": "apps/api",
+  "venv": ".venv"
+}
